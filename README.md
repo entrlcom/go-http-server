@@ -2,9 +2,15 @@
 
 ## Table of Content
 
+- [Authors](#authors)
 - [Examples](#examples)
-- [License](#license)
 - [Links](#links)
+
+## Authors
+
+| Name         | GitHub                                             |
+|--------------|----------------------------------------------------|
+| Klim Sidorov | [@entrlcom-klim](https://github.com/entrlcom-klim) |
 
 ## Examples
 
@@ -12,40 +18,23 @@
 package main
 
 import (
-	"context"
+	"net/http"
 
-	"entrlcom.dev/http-server"
+	"flida.dev/http-server"
 )
 
 func main() {
-	ctx := context.Background()
-
-	// HTTP server.
-	httpServer := http_server.NewHTTPServer()
-	httpServer.Addr = ""     // TODO: set address.
-	httpServer.Handler = nil // TODO: set handler.
-
-	if err := httpServer.ListenAndServe(); err != nil {
-		// TODO: Handle error.
-		return
+	// ❌.
+	httpServer := &http.Server{
+		Addr: "...",
 	}
 
-	// ...
-
-	// Shutdown HTTP server.
-	if err := httpServer.Shutdown(ctx); err != nil {
-		// TODO: Handle error.
-		return
-	}
-
-	// ...
+	// ✅.
+	httpServer := http_server.NewDefaultHTTPServer()
+	httpServer.Addr = "..."
 }
 
 ```
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
 
 ## Links
 
