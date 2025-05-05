@@ -1,4 +1,4 @@
-# HTTP server
+# HTTP Server
 
 ## Table of Content
 
